@@ -22,10 +22,8 @@ def evaluate_model(model, X_test, y_test):
         'f1_score': report['weighted avg']['f1-score']
     }
 
-    # Crear el directorio results si no existe
     os.makedirs('results', exist_ok=True)
     
-    # Guardar las métricas en el directorio results
     with open('results/metrics.json', 'w') as f:
         json.dump(metrics, f)
     

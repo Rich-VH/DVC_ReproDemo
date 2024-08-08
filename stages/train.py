@@ -26,7 +26,6 @@ if __name__ == "__main__":
     with open('params.yaml') as f:
         params = yaml.safe_load(f)
     
-    # Crear el directorio models si no existe
     os.makedirs('models', exist_ok=True)
     
     df = pd.read_csv('data/processed/titanic_processed.csv')
@@ -34,5 +33,4 @@ if __name__ == "__main__":
     X_train_scaled, X_test_scaled = scale_data(X_train, X_test)
     model = train_model(X_train_scaled, y_train, params['model']['n_estimators'], params['model']['random_state'])
     
-    # Guardar el modelo en el directorio models
     joblib.dump(model, 'models/model.pkl')

@@ -20,14 +20,14 @@ stages:
       - data/processed/titanic_processed.csv
       - params.yaml
     outs:
-      - model.pkl
+      - models/model.pkl
 
   evaluate:
     cmd: python stages/evaluate.py
     deps:
-      - model.pkl
+      - models/model.pkl
       - data/processed/titanic_processed.csv
     outs:
       - results/confusion_matrix.png
     metrics:
-      - metrics.json
+      - results/metrics.json
