@@ -40,7 +40,27 @@ stages:
       md5: ddb112ddbcec90723dc9abd7c3d6cefd
       size: 186
     outs:
-    - path: model.pkl
+    - path: models/model.pkl
       hash: md5
       md5: 35127af65fc2ccd7878a50877445b5bf
       size: 2117113
+  evaluate:
+    cmd: python stages/evaluate.py
+    deps:
+    - path: data/processed/titanic_processed.csv
+      hash: md5
+      md5: 6e42212495fc9c6041d8f450dd0a459f
+      size: 36672
+    - path: models/model.pkl
+      hash: md5
+      md5: 35127af65fc2ccd7878a50877445b5bf
+      size: 2117113
+    outs:
+    - path: results/confusion_matrix.png
+      hash: md5
+      md5: 3fc27afb9ae00a75aa00de7103c6ea0d
+      size: 17028
+    - path: results/metrics.json
+      hash: md5
+      md5: 8b0d9f51655eb0fad634780081fe36dc
+      size: 127
