@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import yaml
 from sklearn.model_selection import train_test_split
@@ -25,8 +26,13 @@ if __name__ == "__main__":
     with open('params.yaml') as f:
         params = yaml.safe_load(f)
     
+    # Crear el directorio models si no existe
+    os.makedirs('models', exist_ok=True)
+    
     df = pd.read_csv('data/processed/titanic_processed.csv')
     X_train, X_test, y_train, y_test = split_data(df, params['split']['test_size'], params['split']['random_state'])
     X_train_scaled, X_test_scaled = scale_data(X_train, X_test)
     model = train_model(X_train_scaled, y_train, params['model']['n_estimators'], params['model']['random_state'])
-    joblib.dump(model, 'model.pkl')
+    
+    # Guardar el modelo en el directorio models
+    joblib.dump(model, 'models/model.pkl')

@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import yaml
 from sklearn.model_selection import train_test_split
@@ -21,7 +22,11 @@ def evaluate_model(model, X_test, y_test):
         'f1_score': report['weighted avg']['f1-score']
     }
 
-    with open('metrics.json', 'w') as f:
+    # Crear el directorio results si no existe
+    os.makedirs('results', exist_ok=True)
+    
+    # Guardar las métricas en el directorio results
+    with open('results/metrics.json', 'w') as f:
         json.dump(metrics, f)
     
     print("Accuracy:", accuracy)
@@ -46,5 +51,5 @@ if __name__ == "__main__":
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=params['split']['test_size'], random_state=params['split']['random_state'])
     scaler = StandardScaler()
     X_test_scaled = scaler.fit_transform(X_test)
-    model = joblib.load('model.pkl')
+    model = joblib.load('models/model.pkl')
     evaluate_model(model, X_test_scaled, y_test)
