@@ -1,0 +1,33 @@
+stages:
+  load_data:
+    cmd: python stages/load_data.py
+    deps:
+      - params.yaml
+    outs:
+      - data/raw/titanic.csv
+
+  preprocess_data:
+    cmd: python stages/preprocess_data.py
+    deps:
+      - data/raw/titanic.csv
+      - params.yaml
+    outs:
+      - data/processed/titanic_processed.csv
+
+  train:
+    cmd: python stages/train.py
+    deps:
+      - data/processed/titanic_processed.csv
+      - params.yaml
+    outs:
+      - model.pkl
+
+  evaluate:
+    cmd: python stages/evaluate.py
+    deps:
+      - model.pkl
+      - data/processed/titanic_processed.csv
+    outs:
+      - results/confusion_matrix.png
+    metrics:
+      - metrics.json
