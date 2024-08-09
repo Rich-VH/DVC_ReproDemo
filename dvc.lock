@@ -5,7 +5,7 @@ stages:
     deps:
     - path: params.yaml
       hash: md5
-      md5: ddb112ddbcec90723dc9abd7c3d6cefd
+      md5: cd45c23da55e569b01fa1fe96d19a117
       size: 186
     outs:
     - path: data/raw/titanic.csv
@@ -21,7 +21,7 @@ stages:
       size: 62894
     - path: params.yaml
       hash: md5
-      md5: ddb112ddbcec90723dc9abd7c3d6cefd
+      md5: cd45c23da55e569b01fa1fe96d19a117
       size: 186
     outs:
     - path: data/processed/titanic_processed.csv
@@ -37,13 +37,13 @@ stages:
       size: 36672
     - path: params.yaml
       hash: md5
-      md5: ddb112ddbcec90723dc9abd7c3d6cefd
+      md5: cd45c23da55e569b01fa1fe96d19a117
       size: 186
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: 35127af65fc2ccd7878a50877445b5bf
-      size: 2117113
+      md5: be9320d99c490e287c903f1839d2ca8d
+      size: 4395353
   evaluate:
     cmd: python stages/evaluate.py
     deps:
@@ -53,14 +53,14 @@ stages:
       size: 36672
     - path: models/model.pkl
       hash: md5
-      md5: 35127af65fc2ccd7878a50877445b5bf
-      size: 2117113
+      md5: be9320d99c490e287c903f1839d2ca8d
+      size: 4395353
     outs:
     - path: results/confusion_matrix.png
       hash: md5
-      md5: 3fc27afb9ae00a75aa00de7103c6ea0d
-      size: 17028
+      md5: f3a1efe992c30c05e834939223237d50
+      size: 17302
     - path: results/metrics.json
       hash: md5
-      md5: 8b0d9f51655eb0fad634780081fe36dc
-      size: 127
+      md5: 33ae96040b7c9c10ee42d38760bb812d
+      size: 126
