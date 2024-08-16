@@ -1,7 +1,7 @@
 data_url: 'https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv'
 split:
-  test_size: 0.3
+  test_size: 0.8
   random_state: 40
 model:
-  n_estimators: 200
-  random_state: 40
+  n_estimators: 100
+  random_state: 50
