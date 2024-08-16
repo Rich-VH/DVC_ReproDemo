@@ -5,62 +5,62 @@ stages:
     deps:
     - path: params.yaml
       hash: md5
-      md5: cd45c23da55e569b01fa1fe96d19a117
-      size: 186
+      md5: 5439f7974b4e06fc9d6c075c3428c284
+      size: 179
     outs:
     - path: data/raw/titanic.csv
       hash: md5
-      md5: 2e0e4b0aeeb40b47ee0915eba73534bc
-      size: 62894
+      md5: 4602eb98ec9fd5f5d84950203f6b1db8
+      size: 62002
   preprocess_data:
     cmd: python stages/preprocess_data.py
     deps:
     - path: data/raw/titanic.csv
       hash: md5
-      md5: 2e0e4b0aeeb40b47ee0915eba73534bc
-      size: 62894
+      md5: 4602eb98ec9fd5f5d84950203f6b1db8
+      size: 62002
     - path: params.yaml
       hash: md5
-      md5: cd45c23da55e569b01fa1fe96d19a117
-      size: 186
+      md5: 5439f7974b4e06fc9d6c075c3428c284
+      size: 179
     outs:
     - path: data/processed/titanic_processed.csv
       hash: md5
-      md5: 6e42212495fc9c6041d8f450dd0a459f
-      size: 36672
+      md5: 1479eab1d6858dde7d18c6d993ab43ce
+      size: 35780
   train:
     cmd: python stages/train.py
     deps:
     - path: data/processed/titanic_processed.csv
       hash: md5
-      md5: 6e42212495fc9c6041d8f450dd0a459f
-      size: 36672
+      md5: 1479eab1d6858dde7d18c6d993ab43ce
+      size: 35780
     - path: params.yaml
       hash: md5
-      md5: cd45c23da55e569b01fa1fe96d19a117
-      size: 186
+      md5: 5439f7974b4e06fc9d6c075c3428c284
+      size: 179
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: be9320d99c490e287c903f1839d2ca8d
-      size: 4395353
+      md5: 97181728755acacbceaca4454ca3a58e
+      size: 717465
   evaluate:
     cmd: python stages/evaluate.py
     deps:
     - path: data/processed/titanic_processed.csv
       hash: md5
-      md5: 6e42212495fc9c6041d8f450dd0a459f
-      size: 36672
+      md5: 1479eab1d6858dde7d18c6d993ab43ce
+      size: 35780
     - path: models/model.pkl
       hash: md5
-      md5: be9320d99c490e287c903f1839d2ca8d
-      size: 4395353
+      md5: 97181728755acacbceaca4454ca3a58e
+      size: 717465
     outs:
     - path: results/confusion_matrix.png
       hash: md5
-      md5: f3a1efe992c30c05e834939223237d50
-      size: 17302
+      md5: 82e44a49cbfb071a8ca5bad5e0a35ac2
+      size: 18468
     - path: results/metrics.json
       hash: md5
-      md5: 33ae96040b7c9c10ee42d38760bb812d
-      size: 126
+      md5: 198d3f5ab6ecb36e67b0f9944a50bb9d
+      size: 127
